@@ -25,6 +25,6 @@ app.use((err, req, res, next) => {
   res.status(stat).json({ message: message, data: data });
 });
 
-app.listen(8080, (result) => {
+app.listen(process.env.PORT || 8080, (result) => {
   console.log("Connected to Server.");
 });
