@@ -9,7 +9,7 @@ export default function TaskDetail({ jwtToken }) {
   const taskId = localStorage.getItem("TaskId");
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/get/${taskId}`)
+      .get(`process.env.HOST_URL/get/${taskId}`)
       .then((res) => {
         setTask({
           title: res.data.task.title,

@@ -30,10 +30,9 @@ export default function ForgetPassword() {
     }
     setLoading(true);
     try {
-      const response = await axios.post(
-        `http://localhost:8080/forgetpassword`,
-        { email }
-      );
+      const response = await axios.post(`process.env.HOST_URL/forgetpassword`, {
+        email,
+      });
       setUserId(response.data.userId);
       setShowModal(true);
       startTimer();
@@ -53,7 +52,7 @@ export default function ForgetPassword() {
   // Handle OTP verification and display password reset form
   async function handleSubmitCode() {
     try {
-      await axios.post(`http://localhost:8080/otpverify`, {
+      await axios.post(`process.env.HOST_URL/otpverify`, {
         otp: code,
         email: email,
       });
@@ -83,7 +82,7 @@ export default function ForgetPassword() {
     }
     setLoading(true);
     try {
-      await axios.post(`http://localhost:8080/reset`, {
+      await axios.post(`process.env.HOST_URL/reset`, {
         password: newPassword,
         email: email,
       });

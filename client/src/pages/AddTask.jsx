@@ -20,7 +20,7 @@ export default function AddTask({ jwtToken }) {
 
     try {
       await axios.post(
-        "http://localhost:8080/create",
+        "process.env.HOST_URL/create",
         {
           title,
           description,

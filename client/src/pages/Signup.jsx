@@ -57,7 +57,7 @@ export default function Signup() {
 
   const sendData = async (d) => {
     try {
-      const resp = await axios.post("http://localhost:8080/signup", d);
+      const resp = await axios.post("process.env.HOST_URL/signup", d);
       toast.success(resp.data.message);
 
       // Store the token in local storage

@@ -13,7 +13,7 @@ export default function Card({ title, done, id, jwtToken, setTaskId }) {
     e.preventDefault();
     if (jwtToken) {
       axios
-        .delete(`http://localhost:8080/delete/${id}`, {
+        .delete(`process.env.HOST_URL/delete/${id}`, {
           headers: {
             Authorization: `Bearer ${jwtToken}`,
           },
@@ -24,7 +24,7 @@ export default function Card({ title, done, id, jwtToken, setTaskId }) {
   }
   async function handleToggleTask(id) {
     try {
-      await axios.put(`http://localhost:8080/update/${id}`);
+      await axios.put(`process.env.HOST_URL/update/${id}`);
     } catch (error) {}
   }
   return (

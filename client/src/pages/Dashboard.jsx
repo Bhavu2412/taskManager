@@ -17,7 +17,7 @@ export default function Dashboard() {
       try {
         const token = localStorage.getItem("token");
         if (token) {
-          const res = await axios.get("http://localhost:8080/home", {
+          const res = await axios.get("process.env.HOST_URL/home", {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -45,14 +45,11 @@ export default function Dashboard() {
   const handleDelete = async (id) => {
     try {
       setDeletingTaskId(id); // Set the task being deleted
-      const response = await axios.delete(
-        `http://localhost:8080/delete/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+      const response = await axios.delete(`process.env.HOST_URL/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
 
       if (response.status === 200) {
         setTasks(tasks.filter((task) => task._id !== id));
@@ -75,7 +72,7 @@ export default function Dashboard() {
     setUpdatingTaskId(id); // Set the task being updated
 
     try {
-      const response = await axios.put(`http://localhost:8080/update/${id}`, {
+      const response = await axios.put(`process.env.HOST_URL/update/${id}`, {
         completed: updatedStatus,
       });
 

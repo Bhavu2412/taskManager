@@ -19,7 +19,7 @@ export default function Form({ jwtToken }) {
   const sendData = () => {
     if (jwtToken) {
       axios
-        .post("http://localhost:8080/create", data, {
+        .post("process.env.HOST_URL/create", data, {
           headers: {
             Authorization: `Bearer ${jwtToken}`,
           },

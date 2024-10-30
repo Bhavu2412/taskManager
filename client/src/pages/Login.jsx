@@ -42,7 +42,7 @@ export default function Login() {
 
   const sendData = async (d) => {
     try {
-      const resp = await axios.post("http://localhost:8080/login", d);
+      const resp = await axios.post("process.env.HOST_URL/login", d);
       localStorage.setItem("token", resp.data.token);
       console.log(resp);
       toast.success(resp.data.message);
