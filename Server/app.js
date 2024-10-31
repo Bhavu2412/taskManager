@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGODB_URL).then((result) => {
+mongoose.connect(process.env.MONGO_URL).then((result) => {
   console.log("Database Connected.");
 });
 
